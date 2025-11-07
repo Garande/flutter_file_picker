@@ -303,12 +303,7 @@ object FileUtils {
 
     @Suppress("deprecation")
     private fun getSelectedItems(bundle: Bundle): ArrayList<Parcelable>? {
-        return if (Build.VERSION.SDK_INT >= 33) {  // Use 33 instead of Build.VERSION_CODES.TIRAMISU
-            @Suppress("UNCHECKED_CAST")
-            bundle.getParcelableArrayList("selectedItems", Parcelable::class.java) as? ArrayList<Parcelable>
-        } else {
-            bundle.getParcelableArrayList<Parcelable>("selectedItems")
-        }
+        return bundle.getParcelableArrayList<Parcelable>("selectedItems")
     }
 
     fun getMimeTypes(allowedExtensions: ArrayList<String>?): ArrayList<String> {
