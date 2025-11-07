@@ -304,7 +304,8 @@ object FileUtils {
     @Suppress("deprecation")
     private fun getSelectedItems(bundle: Bundle): ArrayList<Parcelable>? {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            bundle.getParcelableArrayList("selectedItems", Parcelable::class.java)
+            @Suppress("UNCHECKED_CAST")
+            bundle.getParcelableArrayList("selectedItems", Parcelable::class.java) as? ArrayList<Parcelable>
         } else {
             bundle.getParcelableArrayList<Parcelable>("selectedItems")
         }
